@@ -1,0 +1,19 @@
+<h1><u>Flickr API</u></h1>
+<p>Search photos of any user by their id</p>
+
+<%= form_with scope: :search, url: static_pages_path, method: :get do |f| %>
+  <%= f.hidden_field :per_page, value: 10%>
+  <%= f.label :user_id, "Enter flickr user id: "%>
+  <%= f.text_field :user_id%>
+  <%= f.submit "Search user photos" %>
+<% end %>
+
+<% if @photos.present? %>
+  <% @photos.each do |photo| %>
+    <br>
+    <br>
+    <div class="user-photo">
+      <img src="<%= photo %>">
+    </div>
+  <% end %>
+<% end %>
